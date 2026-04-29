@@ -97,11 +97,11 @@ jobs:
             docker pull ${{ needs.ci.outputs.image_tag }}
             docker stop cicd-basic-lab || true
             docker rm cicd-basic-lab || true
-            docker run -d \\
-              --name cicd-basic-lab \\
-              -p 8080:8080 \\
-              -e TZ=Asia/Seoul \\
-              --restart unless-stopped \\
+            docker run -d \
+              --name cicd-basic-lab \
+              -p 8080:8080 \
+              -e TZ=Asia/Seoul \
+              --restart unless-stopped \
               ${{ needs.ci.outputs.image_tag }}
             docker image prune -f
             docker ps
